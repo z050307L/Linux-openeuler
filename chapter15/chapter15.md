@@ -59,7 +59,7 @@ PHP 能干的事：
 
 补充：如果访问 index.html，Nginx 直接读取文件返回，不需要 PHP 和数据库参与。
 
-### 1。3LNMP 整体分层结构
+### 1.3 LNMP 整体分层结构
 
     底层层：Linux（openEuler）管理硬件、网络、文件权限
     网关层：Nginx 接收访问、静态资源、请求分发
@@ -74,7 +74,7 @@ PHP 能干的事：
    - Tomcat：Java 网站环境，和 LNMP 互不兼容
    - Python Web（uWSGI/Gunicorn）：跑 Django/Flask，和 LNMP 无关
 
-### 1.5LNMP 的优缺点
+### 1.5 LNMP 的优缺点
 优点
 
    - 全开源免费，无商业授权费用；

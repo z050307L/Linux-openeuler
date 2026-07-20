@@ -180,12 +180,12 @@ systemctl start sshd
 systemctl enable sshd
 systemctl status sshd
 ```
-3）防火墙放行 22 端口（结合刚才防火墙内容）
+3）防火墙放行 22 端口
 ```bash
 firewall-cmd --permanent --add-port=22/tcp
 firewall-cmd --reload
 ```
-4）修改配置（安全优化，/etc/ssh/sshd_config）
+4）修改配置（/etc/ssh/sshd_config）
 ```bash
 vim /etc/ssh/sshd_config
 ```

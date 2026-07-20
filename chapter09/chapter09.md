@@ -38,13 +38,13 @@
    - STAT 就是进程状态 (R/S/D/Z/T)。
 ![](./picture/psaux.png)
 
-筛选进程搭配管道 grep
+筛选进程grep
 ```bash
 ps -ef | grep nginx    #查看nginx进程
 ps aux | grep -v grep  #排除grep自身进程
 ```
 
-2. top（动态实时查看进程）
+1. top（动态实时查看进程）
 ```bash
 top
 ```

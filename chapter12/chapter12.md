@@ -1,6 +1,6 @@
 # 第十二章 Web服务器
 
-## 1.Docker or Apache
+## 1.Nginx or Apache
 
 ### 1.1基础概况
 
@@ -51,7 +51,7 @@
    - Nginx：几十 MB 内存。
 
 这章我们的主要目的是部署一个静态网站，所以我们选择Docker + Nginx
-即将nginx 跑在 docker 容器中。
+将nginx 跑在 docker 容器中。
 
 ## 2.前期准备
 
@@ -66,18 +66,19 @@ docker --version
 ```
 来查看有没有安装成功
 
-### 2.2 导入nginx-alpine镜像
-如果网络允许的话，可以直接从外网下载nginx镜像
+### 2.2 导入nginx镜像
+如果网络允许的话，可以直接从外网下载nginx
+
 ```bash
-docker pull nginx:1.24-alpine
+docker pull nginx
 ```
-如果网络不允许，需要导入nginx的镜像
+如果网络不允许，需要导入nginx的镜像包
 ![](./picture/nginx.png)
 cd到导入的目录下,再运行
 ```bash
 sudo docker load -i nginx-alpine.tar
 ```
-像我这里导入到了/home/a1/下载，
+我这里导入到了/home/a1/下载，
 
 ```bash
 cd /home/a1/下载
