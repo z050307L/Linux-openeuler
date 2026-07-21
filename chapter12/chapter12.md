@@ -201,6 +201,8 @@ sudo firewall-cmd --add-port=8080/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
+>设置vmware的端口转发，是为了让别的电脑通过物理机IP访问，而不是通过虚拟机IP访问。
+
 4） docker端口映射和vmware NAT端口转发的区别
 |对比维度|Docker -p 端口映射|VMware NAT 端口转发|
 |---|---|---|
