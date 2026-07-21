@@ -296,7 +296,7 @@ Windows 浏览器 → VMware NAT 端口转发 (8080) → openEuler 虚拟机的 
 ## 4.KVM、Docker、VMware 三大虚拟化技术
 
 ### 一、基础定义与底层理论
-1. VMware（硬件虚拟化 / 完整虚拟机，Type1/Type2 hypervisor）
+1. **VMware**（硬件虚拟化 / 完整虚拟机，Type1/Type2 hypervisor）
 核心理论：全虚拟化（Hardware Virtualization）
 
    分层：宿主机硬件 → Hypervisor 层 → 完整客户操作系统
@@ -308,7 +308,7 @@ Windows 浏览器 → VMware NAT 端口转发 (8080) → openEuler 虚拟机的 
    **原理**：依靠 CPU 硬件虚拟化指令（Intel VT-x / AMD-V），完整模拟一套独立硬件（CPU、内存、显卡、磁盘、网卡 BIOS），每台虚拟机拥有独立内核、驱动、完整操作系统。
   
 
-1. KVM（Linux 内核级硬件虚拟化，Type1/Type2 开源 Hypervisor）
+2. **KVM**（Linux 内核级硬件虚拟化，Type1/Type2 开源 Hypervisor）
 核心理论：内核内置硬件虚拟化，属于全虚拟化
 
    KVM 不是独立软件，是Linux 内核模块（kvm.ko），把 Linux 内核直接变成 Type2 Hypervisor；搭配 QEMU 做硬件模拟。
@@ -319,7 +319,7 @@ Windows 浏览器 → VMware NAT 端口转发 (8080) → openEuler 虚拟机的 
     
    架构：物理硬件 → Linux 宿主内核 (KVM) → QEMU 硬件模拟 → 独立客户 OS；
 
-3. Docker（容器，操作系统级虚拟化，OS Virtualization）
+3. **Docker**（容器，操作系统级虚拟化，OS Virtualization）
 核心理论：内核共享容器化，进程级隔离
 
    底层不模拟硬件，所有容器共用宿主机 Linux 内核，不独立操作系统内核；

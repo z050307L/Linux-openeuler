@@ -21,8 +21,7 @@ LNMP 是 Linux + Nginx + MySQL/MariaDB + PHP 的缩写，是一套运行 PHP 动
    - 转发动态 PHP 请求：遇到 .php 文件，不会自己解析，交给 PHP-FPM 处理；
    - 负载均衡、反向代理、防盗链、限流、SSL 加密、伪静态、多站点管理。
 
-对比老方案 Apache
-Nginx 高并发强，上万人同时访问也不容易卡顿，现在几乎所有网站都在用。
+对比老方案 Apache，Nginx 高并发强，上万人同时访问也不容易卡顿，现在几乎所有网站都在用。
 
 3. M = MySQL / MariaDB（关系型数据库，数据仓库）
 M 原本指 MySQL，现在开源系统普遍使用 MariaDB（MySQL 官方分支，完全兼容、免费无版权限制）。
