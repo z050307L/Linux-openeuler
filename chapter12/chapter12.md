@@ -279,7 +279,7 @@ Windows 浏览器 → VMware NAT 端口转发 (8080) → openEuler 虚拟机的 
 
    - 双向实时同步：你在 /home/a1/桌面/MySite 修改、新增网页文件，容器里立刻生效，不需要重启 docker 容器；
    - 容器删除后（docker rm mysite），容器内部文件全部清空，但是宿主机MySite文件夹和你的网页文件完全保留，不会丢失；
-   - 权限问题：容器里 nginx 运行用户 uid=101，如果宿主机文件夹权限不足，就会出现 403 Forbidden，也就是你刚才遇到的问题。
+   - 权限问题：容器里 nginx 运行用户 uid=101，如果宿主机文件夹权限不足，就会出现 403 Forbidden，
 
 5. nginx:alpine（最后一个参数：镜像名称）
 
