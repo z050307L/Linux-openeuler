@@ -104,8 +104,6 @@ systemctl disable firewalld
 
 # 查看防火墙规则
 firewall-cmd --list-all
-
-
 ```
 >两个模式：
 runtime：临时生效，重启防火墙失效
