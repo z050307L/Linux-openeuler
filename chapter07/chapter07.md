@@ -36,7 +36,7 @@ sudo rm -f /etc/yum.repos.d/*.repo
 3. 添加新镜像源
 
 根据系统版本选择合适的镜像源（以下以网易源为例）。创建新的源文件：
-sudo vi /etc/yum.repos.d/openEuler.repo
+`sudo vi /etc/yum.repos.d/openEuler.repo`
 ```ini
 [OS]
 name=OS
