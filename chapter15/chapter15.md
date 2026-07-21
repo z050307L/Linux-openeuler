@@ -46,7 +46,7 @@ PHP 能干的事：
    - 动态生成页面：根据不同用户展示不同内容；
    - 文件上传、图片处理、接口开发（给小程序 / APP 提供数据）。
 
-### 1.2 完整访问流程（通俗易懂，用户打开网站全过程）
+### 1.2 完整访问流程
 举个例子：浏览器访问 http://服务器IP/test.php
 
    - 用户输入网址，网络请求到达服务器，先交给 Nginx；
@@ -66,15 +66,7 @@ PHP 能干的事：
     逻辑层：PHP-FPM + PHP 处理网站业务逻辑
     存储层：MariaDB 持久化存储网站数据
 
-### 1.4 同类环境对比
-
-   - LNMP：Linux + Nginx + MariaDB + PHP（当下主流，高并发首选）
-   - LAMP：Linux + Apache + MySQL + PHP（老旧方案，并发弱，逐步淘汰）
-   - LNMPA：Nginx + Apache 混合，极少使用
-   - Tomcat：Java 网站环境，和 LNMP 互不兼容
-   - Python Web（uWSGI/Gunicorn）：跑 Django/Flask，和 LNMP 无关
-
-### 1.5 LNMP 的优缺点
+### 1.4 LNMP 的优缺点
 优点
 
    - 全开源免费，无商业授权费用；
@@ -90,7 +82,7 @@ PHP 能干的事：
    - 高大型分布式业务，原生 LNMP 架构需要额外做集群优化；
    - PHP 不适合超高运算量服务（适合网页、轻量接口）。
 
-### 1.6 补充关键配套组件：PHP-FPM
+### 1.5 补充关键配套组件：PHP-FPM
 很多人分不清 PHP 和 PHP-FPM：
 
    - PHP：编程语言本身；

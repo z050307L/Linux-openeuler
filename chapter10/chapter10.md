@@ -207,7 +207,7 @@ PasswordAuthentication yes # 密码登录，密钥登录后这里关闭更安全
 改完重启 sshd 生效：bash运行`systemctl restart sshd`
 
 ### 3.3 客户端连接方式
-方式 1：Linux / Mac 自带 ssh 命令
+1. Linux / Mac 自带 ssh 命令
 ```bash
 ssh 用户名@服务器IP -p 端口号
 ```
@@ -220,7 +220,8 @@ ssh root@192.168.1.100
 ssh root@192.168.1.100 -p 22222
 ```
 第一次连接会出现确认：输入 yes，之后输入服务器密码即可登录。
-方式 2：Windows 系统连接
+
+2. Windows 系统连接
 - 方案 A：Windows10‑11 自带 OpenSSH
 
         开启 OpenSSH 客户端：设置 → 应用 → 可选功能，安装 OpenSSH 客户端；
@@ -239,8 +240,26 @@ ifconfig
 ```
 ![](./picture/ifconfig.png)
 
-方案 B：第三方工具（日常运维最常用）
+3. 第三方工具（日常运维最常用）
 
     Xshell、SecureCRT、FinalShell、Putty
     填写：IP、端口、账号密码，图形化操作。
 
+**Xshell**:
+![](./picture/xshell.png)
+
+Xshell是一款适用于 Windows 的全功能 SSH 客户端软件。能够为每个终端会话设置不同的参数，为多个会话创建通用脚本。
+
+支持 Windows 命令行和 SCP 协议。还具有用于在图形环境中管理文档的内置文件管理器。可以记录你执行的所有命令，并将“记录”的材料变成一个脚本，然后可以随时重新启动。
+
+Xshell是一个强大的 SSH 客户端。允许你直接在 XShell 中打开 Windows CMD命令行界面，此外还提供了一个选项卡式界面。可以显示多个需要同时查看和监控的会话。
+
+**Putty**:
+![](./picture/putty.png)
+
+
+Putty没有添加任何安全功能。但是，如果使用SSH 协议进行连接的话，则可以添加一些安全性。SSH协议将提供身份验证以及加密以保护通过网络进行的连接。此外还支持 SCP、SSH、rlogin 和 Telnet 协议。
+
+Putty还有一些附加的功能，包括保存会话以进行快速访问。但是，最大的缺点在于不能保存远程服务器的登录密码，这主要是因为官方认为保存密码不够安全。
+
+Putty 最初是为 Windows 操作系统开发的，但是最新版本已经可以在包括 UNIX 和 Linux 在内的各种其他类型的操作系统上运行。
