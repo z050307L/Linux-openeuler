@@ -366,3 +366,64 @@ Windows 浏览器 → VMware NAT 端口转发 (8080) → openEuler 虚拟机的 
    KVM > VMware（同硬件下 KVM 损耗更低，开源无商业层冗余）；
    Docker 远优于两者，几乎接近原生物理进程性能，无操作系统启动开销。
 
+## 补充：用GitHub部署静态网站
+
+
+1. 我们需要注册GitHub账号，以及下载git工具。
+
+2. 创建github仓库
+   - 点击右上角的`new`
+   - 填写仓库信息，如名字，可见性要选择公开‘Public’
+   - 填写完成后点击`Create repository`
+![](./picture/github1.png)
+
+3. 上传网站文件
+
+1）简单方法：在网页上传
+   - 在仓库界面点击`uploading an existing file`
+   - 将html文件拖拽到页面上
+   - 填写提交信息“first commit”
+   - 点击`commit changes`
+![](./picture/github2.png)
+
+
+2）用Git命令上传
+   - cd到项目文件夹
+   ```bash
+   cd Desktop/mysite
+   ```
+   - 初始化git仓库
+   ```bash
+   git init
+   ```
+   - 提交文件
+   ```bash
+   git add .
+   ```
+   - 提交更改
+   ```bash
+   git commit -m "first commit"
+   ```
+   - 创建分支
+   ```bash
+   git branch -M main
+   ```
+   - 连接到GitHub仓库
+   ```bash
+   git remote add origin https://github.com/用户名/仓库名.git
+   ```
+   - 推送到GitHub
+   ```bash
+   git push -u origin main
+   ```
+
+3）启用GitHub Pages
+   - 在GitHub仓库页面，点击 “Settings”
+   - 在左侧菜单找到 “Pages”
+   - 在Source部分选择：
+     - Source: “Deploy from a branch”
+     - Branch: “main”
+     - Folder: “/ (root)”
+   - 点击 “Save”
+![](./picture/github3.png)
+4）几分钟后，你会在Pages设置页面看到： “Your site is published at https://你的用户名.github.io/仓库名
