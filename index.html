@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linux-openEuler 文档目录</title>
+  <!-- Markdown解析 -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- 代码高亮【更换完整包】 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/dist/highlight.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -102,7 +104,7 @@
     </div>
   </div>
 
- <script>
+  <script>
     // 章节列表 chapter01 ~ chapter15
     const chapters = [];
     for(let i = 1; i <= 15; i++){
@@ -133,35 +135,37 @@
         const mdText = await res.text();
         let html = marked.parse(mdText);
 
-        // ========== 核心修复：修正图片路径 ==========
-        // md文件所在目录前缀：chapter01/
+        // 修复图片相对路径
         const baseDir = `${name}/`;
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
         const imgs = tempDiv.querySelectorAll('img');
         imgs.forEach(img=>{
           const src = img.getAttribute('src');
-          // 跳过网络地址、以/开头的绝对路径
           if(!src || src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')){
             return;
           }
-          // 给相对图片拼接md所在目录
           img.src = baseDir + src;
         });
         html = tempDiv.innerHTML;
-        // ===========================================
 
         contentBox.innerHTML = html;
-        document.querySelectorAll('pre code').forEach(block=>{
-          hljs.highlightElement(block);
-        });
+
+        // 增加判断：hljs存在才执行高亮，防止报错阻断渲染
+        if(window.hljs){
+          document.querySelectorAll('pre code').forEach(block=>{
+            hljs.highlightElement(block);
+          });
+        }
+
       }catch(err){
+        console.error("加载异常：", err);
         contentBox.innerHTML = `
         <div style="color:red;">
-          ❌ Markdown 文件加载失败<br>
+          ❌ 加载失败<br>
           请求路径：${mdPath}<br>
           错误信息：${err.message}<br>
-          检查：文件夹名称、md文件名大小写！GitHub 区分大小写！
+          <small>提示：如果是hljs报错，属于脚本加载时序问题，刷新页面重试即可</small>
         </div>`;
       }
     }
@@ -181,7 +185,6 @@
       breaks: true
     })
 
-    // 页面初始化、hash变化监听
     window.addEventListener('hashchange', ()=>{
       const ch = getCurrentChapter();
       if(ch) loadChapter(ch);
@@ -190,6 +193,6 @@
       const ch = getCurrentChapter();
       if(ch) loadChapter(ch);
     })
-</script>
+  </script>
 </body>
 </html>
