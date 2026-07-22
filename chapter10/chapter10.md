@@ -243,6 +243,8 @@ ifconfig
     Xshell、SecureCRT、FinalShell、Putty
     填写：IP、端口、账号密码，图形化操作。
 
+这里只做简单介绍
+
 **Xshell**:
 ![](./picture/xshell.png)
 
