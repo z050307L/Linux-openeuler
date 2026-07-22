@@ -102,7 +102,7 @@
     </div>
   </div>
 
-  <script>
+ <script>
     // 章节列表 chapter01 ~ chapter15
     const chapters = [];
     for(let i = 1; i <= 15; i++){
@@ -124,7 +124,6 @@
       const activeItem = document.querySelector(`[data-chapter="${name}"]`);
       if(activeItem) activeItem.classList.add('active');
 
-      // 更新地址哈希
       window.location.hash = name;
       contentBox.innerHTML = `<div class="loading">加载中 ${name}/${name}.md ...</div>`;
       const mdPath = `${name}/${name}.md`;
@@ -132,7 +131,26 @@
         const res = await fetch(mdPath);
         if(!res.ok) throw new Error(`HTTP ${res.status}`);
         const mdText = await res.text();
-        const html = marked.parse(mdText);
+        let html = marked.parse(mdText);
+
+        // ========== 核心修复：修正图片路径 ==========
+        // md文件所在目录前缀：chapter01/
+        const baseDir = `${name}/`;
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const imgs = tempDiv.querySelectorAll('img');
+        imgs.forEach(img=>{
+          const src = img.getAttribute('src');
+          // 跳过网络地址、以/开头的绝对路径
+          if(!src || src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/')){
+            return;
+          }
+          // 给相对图片拼接md所在目录
+          img.src = baseDir + src;
+        });
+        html = tempDiv.innerHTML;
+        // ===========================================
+
         contentBox.innerHTML = html;
         document.querySelectorAll('pre code').forEach(block=>{
           hljs.highlightElement(block);
@@ -172,6 +190,6 @@
       const ch = getCurrentChapter();
       if(ch) loadChapter(ch);
     })
-  </script>
+</script>
 </body>
 </html>
